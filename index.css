@@ -32,13 +32,15 @@ header{
     max-width: 320px;
     text-align: center;
     user-select: none;
+    display:flex;
+    flex-direction:column;
 }
 img{
 width: 100px;
 margin-bottom: 20px;
 
 }
-header input{
+header #input{
     height:130px;
     border-radius: 10px;
     border: none;
@@ -47,9 +49,9 @@ header input{
     width: 100%;
     padding:0 ;
     color: white;
-    position: relative; /* Añade padding superior para mover el texto hacia arriba */
     font-size: 20px;
-    
+    box-sizing: border-box;
+    resize: none;
 }
 button{
     width: 100%;
@@ -68,15 +70,36 @@ p{
     color: #04131C;
     font-family: "Inter", sans-serif;
     font-size: 1rem;
-    max-width: 100%;
+    max-width: 320px;
     padding: 20px;
-    margin: 0;
+    margin: 10px 0;
     text-align: left;
+    word-wrap: break-word;
 }
-input::placeholder {
+#input::placeholder {
     color: #aaa; /* Cambia el color del placeholder si es necesario */
     position: absolute;
     top: 20px; /* Ajusta este valor según sea necesario */
     left: 20px; /* Ajusta este valor según sea necesario */
     font-size: .9rem;
   }
+.input-txt::placeholder{
+  color: #aaa;
+}
+.input-txt{
+  width:100px;
+  height:40px;
+  border-radius: 10px;
+  border: none;
+  background-color:#444059 ;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  font-size: 15px;
+  box-sizing: border-box;
+  margin:20px 0 0 0;
+}
+
+#to{
+  margin-left:116px;
+}
+
