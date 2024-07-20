@@ -14,59 +14,62 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
-const referenceInDb = ref(database, "endorsements");
-
-onValue(referenceInDb, function (snapshot) {
-  const snapshotDoesExist = snapshot.exists();
-  if (snapshotDoesExist) {
-    let itemsArray = Object.values(snapshot.val());
-
-    appendItemToEndorsment(itemsArray);
-  } else {
-    endorsementsDiv.innerHTML = "No items yet.....";
-  }
-});
+const endorsementsInDb = ref(database, "endorsements");
 
 // javascrip
 
 const publishBtn = document.getElementById("publish-btn");
-const endorsementsEl = document.getElementById("input");
+let endorsementsEl = document.getElementById("input");
 const fromEl = document.getElementById("from");
 const toEl = document.getElementById("to");
-let endorsementsDiv = document.getElementById("endorsements-para");
-
+const endorsementsDiv = document.getElementById("endorsements-para");
+const noitemsOnEndorsements = "There is no items in here... yet";
+//
+onValue(endorsementsInDb, function (snapshot) {
+  const endorsementsExists = snapshot.exists();
+  
+  if (endorsementsExists) {
+    const endorsementsArrays = Object.entries(snapshot.val());
+    clearEndorsementsDiv();
+    for (let i = 0; i < endorsementsArrays.length; i++) {
+      let currentEndorsements = endorsementsArrays[i];
+      
+      appendItemEndorsements(currentEndorsements);
+      
+    }
+  } else {
+    endorsementsDiv.innerHTML = noitemsOnEndorsements
+  }
+});
+//
 publishBtn.addEventListener("click", function () {
   let inputValue = endorsementsEl.value;
-  let fromValue = fromEl.value;
-  let toValue = toEl.value;
-  push(referenceInDb, inputValue);
-  console.log(inputValue, fromValue, toValue);
+  
+  push(endorsementsInDb, inputValue);
+
   clearInputValue();
 });
 
 function clearInputValue() {
   endorsementsEl.value = "";
-  fromEl.value = "";
-  toEl.value = "";
 }
 
-function appendItemToEndorsment(item) {
-  let breakPoint = document.createElement("br")
-  let itemID = item[0];
-  let itemValue = item[1];
+function appendItemEndorsements(item) {
+  let itemId = item[0]
+  let itemValue = item[1]
+  let toElValue = toEl.value
+  let fromElValue = fromEl.value
+  let totalValue = `Para ${toElValue},<br><br> ${itemValue}. <br><br> De parte de ${fromElValue}  `
   let createdParagraph = document.createElement("p");
-  
+  createdParagraph.innerHTML = totalValue;
+  endorsementsDiv.append(createdParagraph);
 
-  createdParagraph.textContent = `De: ${fromEl.value} 
-  ${endorsementsEl.value} 
-  Para: ${toEl.value}`;
-  endorsementsDiv.append(breakPoint,createdParagraph);
-console.log(endorsementsDiv)
   createdParagraph.addEventListener("dblclick", function () {
-    // let exactLocationOfItemInDB = ref(database, `endorsements/`)
-    remove(referenceInDb);
+    let exactLocationOfEndorsements = ref(database,  `endorsements/${itemId}` )
+    remove(exactLocationOfEndorsements)
   });
 }
-function clearShoppingListEl() {
+
+function clearEndorsementsDiv() {
   endorsementsDiv.innerHTML = "";
 }

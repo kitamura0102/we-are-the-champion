@@ -31,7 +31,6 @@ header{
     height: 80%;
     max-width: 320px;
     text-align: center;
-    user-select: none;
     display:flex;
     flex-direction:column;
 }

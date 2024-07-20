@@ -1,7 +1,12 @@
-<html>
-  <head>
-    <title>We are the Champions</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>We are the Champions</title>
     <link rel="stylesheet" href="index.css" />
+    <!-- fontAwesome -->
+    <script src="https://kit.fontawesome.com/f3b2bd313f.js" crossorigin="anonymous"></script>
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,36 +21,41 @@
     1,900&display=swap"
       rel="stylesheet"
     />
-  </head>
-  <body>
-    <header>
-      <div class="header">
-        <img src="/assets/freddie.png" alt="" />
-        <h1>We are the Champions</h1>
-        <textarea id="input" rows="1" placeholder="Write your endorsement here"></textarea>
-        <input
-          type="text"
-          id="from"
-               class="input-txt"
-          placeholder="From:" 
-        />
+</head>
+<body>
+  <header>
+    <div class="header">
+      <img src="/assets/freddie.png" alt="" />
+      <h1>We are the Champions</h1>
+      <form action="">
+      <textarea id="input" rows="1" placeholder="Write your endorsement here" ></textarea>
+      <input
+        type="text"
+        id="from"
+             class="input-txt"
+        placeholder="De:"
+         
+      />
+      
+      <input
+        type="text"
+        id="to"
+             class="input-txt"
+        placeholder="Para:"
         
-        <input
-          type="text"
-          id="to"
-               class="input-txt"
-          placeholder="To:"
-        />
-        <button id="publish-btn">Publish</button>
+      />
+      <button id="publish-btn">Publish</button>
+    </form>
+    </div>
+    <div class="endorsements">
+      <h2>- Endorsements -</h2>
+      <div id="endorsements-para">
+        
       </div>
-      <div class="endorsements">
-        <h2>- Endorsements -</h2>
-        <div id="endorsements-para">
-          
-        </div>
-      </div>
-    </header>
+    </div>
+  </header>
 
-    <script src="index.js" type="module"></script>
-  </body>
+  <script src="index.js" type="module"></script>
+</body>
 </html>
+
