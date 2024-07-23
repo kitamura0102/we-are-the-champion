@@ -76,6 +76,7 @@ p{
     word-wrap: break-word;
     cursor: pointer;
 }
+
 #input::placeholder {
     color: #aaa; /* Cambia el color del placeholder si es necesario */
     position: absolute;
@@ -102,4 +103,47 @@ p{
 
 #to{
   margin-left:116px;
+}
+
+/* likes */
+.comment {
+  position: relative;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #EDE9FE;
+  color: #04131C;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  max-width: 320px;
+  text-align: left;
+  word-wrap: break-word;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.like-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.like-icon {
+  cursor: pointer;
+  margin-left: 10px;
+  color: red;
+}
+.delete-btn {
+  position: absolute; /* Posiciona el botón en la esquina superior derecha */
+
+  bottom: 100px;
+  right: 0;
+  background: transparent;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  cursor: pointer;
 }

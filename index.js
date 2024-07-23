@@ -6,6 +6,7 @@ import {
   push,
   onValue,
   remove,
+  update,
 } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
 const firebaseConfig = {
@@ -44,8 +45,15 @@ onValue(endorsementsInDb, function (snapshot) {
 //
 publishBtn.addEventListener("click", function () {
   let inputValue = endorsementsEl.value;
-  
-  push(endorsementsInDb, inputValue);
+  let toElValue = toEl.value
+  let fromElValue = fromEl.value
+  let totalValue = {
+    to: toElValue,
+    from: fromElValue,
+    message:inputValue,
+    likes:0
+  }
+  push(endorsementsInDb, totalValue);
 
   clearInputValue();
 });
@@ -55,21 +63,56 @@ function clearInputValue() {
 }
 
 function appendItemEndorsements(item) {
-  let itemId = item[0]
-  let itemValue = item[1]
-  let toElValue = toEl.value
-  let fromElValue = fromEl.value
-  let totalValue = `Para ${toElValue},<br><br> ${itemValue}. <br><br> De parte de ${fromElValue}  `
-  let createdParagraph = document.createElement("p");
-  createdParagraph.innerHTML = totalValue;
-  endorsementsDiv.append(createdParagraph);
+  let itemId = item[0];
+  let itemValue = item[1];
+  let to = itemValue.to;
+  let from = itemValue.from;
+  let message = itemValue.message;
+  let likes = itemValue.likes;
 
-  createdParagraph.addEventListener("dblclick", function () {
-    let exactLocationOfEndorsements = ref(database,  `endorsements/${itemId}` )
-    remove(exactLocationOfEndorsements)
+  let createdComment = document.createElement("div");
+  createdComment.className = "comment";
+  createdComment.innerHTML = `Para ${to},<br><br>${message}.<br><br>De parte de ${from}`;
+
+  let likeContainer = document.createElement("div");
+  likeContainer.className = "like-container";
+
+  let likesCount = document.createElement("span");
+  likesCount.className = "likes-count";
+  likesCount.textContent = likes;
+
+  let heartIcon = document.createElement("i");
+  heartIcon.className = "fa-solid fa-heart fa-lg like-icon";
+
+  likeContainer.appendChild(likesCount);
+  likeContainer.appendChild(heartIcon);
+  createdComment.appendChild(likeContainer);
+  endorsementsDiv.append(createdComment);
+
+  createdComment.addEventListener("dblclick", function () {
+    let newLikes = likes + 1;
+    let exactLocationOfEndorsements = ref(database, `endorsements/${itemId}`);
+    update(exactLocationOfEndorsements, { likes: newLikes });
   });
-}
 
+  
+
+  // Crear el botón de eliminar
+  // Crear el botón de eliminar
+  let deleteButton = document.createElement("button");
+  deleteButton.className = "delete-btn";
+  deleteButton.innerHTML = "X";
+
+  // Añadir el contenido y el botón de eliminar al contenedor del comentario
+  createdComment.append(deleteButton);
+
+  // Evento para eliminar el comentario
+  deleteButton.addEventListener("click", function () {
+    let exactLocationOfEndorsements = ref(database, `endorsements/${itemId}`);
+    remove(exactLocationOfEndorsements);
+  });
+
+}
 function clearEndorsementsDiv() {
   endorsementsDiv.innerHTML = "";
 }
