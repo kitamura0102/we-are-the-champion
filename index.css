@@ -2,7 +2,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #1F2937;
+  background-color: #1f2937;
   color: white;
   width: 100%;
   height: 100vh;
@@ -11,107 +11,103 @@ body {
   font-family: "Inter", sans-serif; */
 }
 
-body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    box-sizing: border-box;
-    
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
 }
-h1{
-    font-family: "Roboto", sans-serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    
-    
+h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
-header{
-    height: 80%;
-    max-width: 320px;
-    text-align: center;
-    display:flex;
-    flex-direction:column;
+header {
+  height: 80%;
+  max-width: 320px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
-img{
-width: 100px;
-margin-bottom: 20px;
-
+img {
+  width: 100px;
+  margin-bottom: 20px;
 }
-header #input{
-    height:130px;
-    border-radius: 10px;
-    border: none;
-    background-color:#444059 ;
-    font-family: "Poppins", sans-serif;
-    width: 100%;
-    padding:0 ;
-    color: white;
-    font-size: 20px;
-    box-sizing: border-box;
-    resize: none;
+header #input {
+  height: 130px;
+  border-radius: 10px;
+  border: none;
+  background-color: #444059;
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  padding: 0;
+  color: white;
+  font-size: 20px;
+  box-sizing: border-box;
+  resize: none;
 }
-button{
-    width: 100%;
-    font-size: 1.4rem;
-    font-weight: bold;
-    background-color:#0284C7 ;
-    color: #04131C;
-    height: 60px;
-    border-radius: 10px;
-    border: none;
-    margin: 20px 0;
-    cursor: pointer;
+button {
+  width: 100%;
+  font-size: 1.4rem;
+  font-weight: bold;
+  background-color: #0284c7;
+  color: #04131c;
+  height: 60px;
+  border-radius: 10px;
+  border: none;
+  margin: 20px 0;
+  cursor: pointer;
 }
-p{
-    background-color: #EDE9FE;
-    color: #04131C;
-    font-family: "Inter", sans-serif;
-    font-size: 1rem;
-    max-width: 320px;
-    padding: 20px;
-    margin: 10px 0;
-    text-align: left;
-    word-wrap: break-word;
-    cursor: pointer;
+p {
+  background-color: #ede9fe;
+  color: #04131c;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  max-width: 320px;
+  padding: 20px;
+  margin: 10px 0;
+  text-align: left;
+  word-wrap: break-word;
+  cursor: pointer;
 }
 
 #input::placeholder {
-    color: #aaa; /* Cambia el color del placeholder si es necesario */
-    position: absolute;
-    top: 20px; /* Ajusta este valor según sea necesario */
-    left: 20px; /* Ajusta este valor según sea necesario */
-    font-size: .9rem;
-  }
-.input-txt::placeholder{
+  color: #aaa; /* Cambia el color del placeholder si es necesario */
+  position: absolute;
+  top: 20px; /* Ajusta este valor según sea necesario */
+  left: 20px; /* Ajusta este valor según sea necesario */
+  font-size: 0.9rem;
+}
+.input-txt::placeholder {
   color: #aaa;
 }
-.input-txt{
-  width:100px;
-  height:40px;
+.input-txt {
+  width: 100px;
+  height: 40px;
   border-radius: 10px;
   border: none;
-  background-color:#444059 ;
+  background-color: #444059;
   font-family: "Poppins", sans-serif;
   color: white;
   font-size: 15px;
   box-sizing: border-box;
-  margin:20px 0 0 0;
+  margin: 20px 0 0 0;
   line-break: normal;
 }
 
-#to{
-  margin-left:116px;
+.from-to{
+  display: flex;
+  justify-content: space-between;
 }
-
 /* likes */
 .comment {
   position: relative;
   padding: 10px;
   margin: 10px 0;
-  background-color: #EDE9FE;
-  color: #04131C;
+  background-color: #ede9fe;
+  color: #04131c;
   font-family: "Inter", sans-serif;
   font-size: 1rem;
   max-width: 320px;
